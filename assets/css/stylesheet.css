@@ -1690,6 +1690,8 @@ body {
     color:#4d9bc0;
 }
 
+
+
 /*------------------------------------------
 -------------- Media Queries ---------------
 ------------------------------------------*/
@@ -1909,4 +1911,14 @@ body {
         padding: 0 0 0 10px;
         border-radius: 5px;
     }
+}
+
+
+.client-companies .col-sm-3 {
+     
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 0;
+    flex: 50% 0 0;
+    width: 50% !important;
+    max-width: 100%;
 }
