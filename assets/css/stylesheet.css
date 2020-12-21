@@ -1684,6 +1684,11 @@ body {
     vertical-align: middle;
 }
 
+.new {
+    font-size: 150%;
+    font-weight: bolder;
+    color:#4d9bc0;
+}
 
 /*------------------------------------------
 -------------- Media Queries ---------------
