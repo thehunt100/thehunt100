@@ -21,6 +21,54 @@
 </head>
 
 <body class="boxed-layout">
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="signupFormLong" tabindex="-1" role="dialog" aria-labelledby="signupFormLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupFormLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="inviteFormLong" tabindex="-1" role="dialog" aria-labelledby="inviteFormLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="inviteFormLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+
+
     <div class="wrapper">
         <!-- Navbar Section -->
         <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top wt-border">
@@ -36,7 +84,7 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#reviews">Reviews</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#pricing">Pricing</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#faqs">FAQ</a></li>
-                        <li><a class="btn-nav js-scroll-trigger" href="#cta">Signup</a></li>
+                        <li><a class="btn-nav _js-scroll-trigger" href="#cta" data-toggle="modal" data-target="#signupFormLong">Signup</a></li>
                     </ul>
                 </div>
             </div>
@@ -57,10 +105,9 @@
                                     <div class="f-text">
                                         <div class="left-content">
                                             <!--<h4>Get Clients With</h4>-->
-
                                             <h2>The Hunt 100 will change your LinkedIn Game.</h2>
-                                            <a class="btn-action btn-outline nav-link js-scroll-trigger" href="#features">See More</a>
-                                            <a class="btn-action" href="#">Signup</a>
+                                            <a class="btn-action btn-outline nav-link js-scroll-trigger" href="#cta">Contact</a>
+                                            <a class="btn-action" href="#" data-toggle="modal" data-target="#signupFormLong">Signup</a>
                                         </div>
                                         <p class="condition_txt">Free unrestricted usage for invitees<br> No credit card required.
                                         </p>
@@ -569,7 +616,7 @@
                                             <span>Free</span>
                                             <div class="sub_span">Lifetime</div>
                                         </div>
-                                        <a class="btn-action">Use Code</a>
+                                        <a class="btn-action" data-toggle="modal" data-target="#inviteFormLong">Use Code</a>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -584,7 +631,7 @@
                                             <span>$295</span>
                                             <div class="sub_span sub_span_alt">Per Month</div>
                                         </div>
-                                        <a class="btn-action btn-outline">Signup</a>
+                                        <a class="btn-action btn-outline" data-toggle="modal" data-target="#signupFormLong">Signup</a>
                                     </div>
                                 </div>
                             </div>
@@ -711,7 +758,7 @@
                                 <h2>The Hunt 100 the most powerful method to get results on LinkedIn.</h2>
                                 <div class="form">
                                     <form id="chimp-form" class="subscribe-form" action="assets/php/subscribe.php" method="post" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded" autocomplete="off" novalidate>
-                                        <input class="mail" id="chimp-email" type="email" name="email" placeholder="Enter email address" autocomplete="off"><input class="submit-button" type="submit" value="Sign Up">
+                                        <input class="mail" id="chimp-email" type="email" name="email" placeholder="Enter email address" autocomplete="off"><input class="submit-button" type="submit" value="Contact">
                                     </form>
                                     <div id="response"></div>
                                 </div>
