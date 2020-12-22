@@ -1908,6 +1908,9 @@ body {
         width: 120%;
         margin-left: -10%;
     }
+    .ft-inner.ft-inverted .ft-image img {
+        width: 94%;
+    }
 }
 
 @media only screen and (max-width: 420px) and (min-width: 240px) {
