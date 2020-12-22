@@ -1908,8 +1908,8 @@ body {
         width: 120%;
         margin-left: -10%;
     }
-    .ft-inner.ft-inverted .ft-image img {
-        width: 94%;
+    .img-fluid {
+        width: 100% !important;
     }
 }
 
