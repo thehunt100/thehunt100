@@ -1687,9 +1687,8 @@ body {
 .new {
     font-size: 150%;
     font-weight: bolder;
-    color:#4d9bc0;
+    color: #4d9bc0;
 }
-
 
 
 /*------------------------------------------
@@ -1913,12 +1912,16 @@ body {
     }
 }
 
-
 .client-companies .col-sm-3 {
-     
     -webkit-box-flex: 0;
     -ms-flex: 0 0 0;
     flex: 50% 0 0;
     width: 50% !important;
     max-width: 100%;
+}
+
+.ft-inner .ft-image {
+    padding: 0px;
+    width: 110%;
+    margin-left: -5%;
 }
