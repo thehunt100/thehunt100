@@ -182,36 +182,36 @@ $(document)
         //
 
 
-        $("#leadspod-download-course-hero-submit").click(function(event) {
+        $("#chimp-form").click(function(event) {
             event.preventDefault();
-            $('#leadspod-download-course-hero-name')
+
+
+
+            $('#contact-message')
                 .css('border-color', '#e7e7e7');
-            $('#leadspod-download-course-hero-email')
+            $('#contact-email')
                 .css('border-color', '#e7e7e7');
 
-            var name = $('#leadspod-download-course-hero-name').val();
-            var email = $('#leadspod-download-course-hero-email').val();
+            var message = $('#contact-message').val();
+            var email = $('#contact-email').val();
 
             var proceed = true;
-            if (name == "") {
-                $('#leadspod-download-course-hero-name')
-                    .css('border-color', '#e41919');
+            if (message == "") {
+                $('#contact-message').css('border', '2px solid red');
                 proceed = false;
             }
             if (email == "") {
-                $('#leadspod-download-course-hero-email')
-                    .css('border-color', '#e41919');
+                $('#contact-email').css('border', '2px solid red');
                 proceed = false;
             }
             if (!isEmail(email)) {
-                $('#leadspod-download-course-hero-email')
-                    .css('border-color', '#e41919');
+                $('#contact-email').css('border', '2px solid red');
                 proceed = false;
             }
 
             if (proceed) {
                 document.querySelector("#recaptcha1").style.display = "block";
-                document.querySelector("#leadspod-download-course-hero-submit").style.display = "none";
+                document.querySelector("#contact-submit").style.display = "none";
             }
 
 
