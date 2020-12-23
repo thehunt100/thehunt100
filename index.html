@@ -20,6 +20,48 @@
     <link href="assets/css/stylesheet.css" rel="stylesheet" type="text/css" media="all" />
 
     <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
+    <script>
+        function ValidateEmail(email) {
+            if (!email) return false;
+            var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (email.match(mailformat)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function ValidateFirstName(firstName) {
+            if (!firstName) return false;
+            if (firstName.length > 3) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function ValidateLastName(lastName) {
+            if (!lastName) return false;
+            if (lastName.length > 3) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+    <style>
+        .validationtext {
+            display: none;
+            color: red;
+            margin-top: -25px;
+            padding: 20px;
+            font-size: 90%;
+        }
+        
+        .submit-button-email {
+            margin-left: 0px;
+        }
+    </style>
 </head>
 
 <body class="boxed-layout">
@@ -72,11 +114,16 @@
                     <div class="form">
                         <form id="chimp-form-premium" class="subscribe-form" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded" autocomplete="off" novalidate>
                             <input class="mail" id="chimp-email-firstname1" type="email" name="email" placeholder="First name" autocomplete="off">
+                            <span class="validationtext chimp-email-firstname1">First name should be at least 3 letters</span>
                             <input class="mail" id="chimp-email-lastname1" type="email" name="email" placeholder="Last name" autocomplete="off">
+                            <span class="validationtext chimp-email-lastname1">Last name should be at least 3 letters</span>
                             <input class="mail" id="chimp-email-email1" type="email" name="email" placeholder="Email" autocomplete="off">
+                            <span class="validationtext chimp-email-email1">Please fill in a correct email</span>
+                            <input id="submit-button-email1" type="submit" value="Submit">
                         </form>
                         <div id="response-premium"></div>
                     </div>
+
 
 
                     <div id="smart-button-container11">
@@ -86,6 +133,55 @@
                     </div>
 
                     <script>
+                        document.querySelector('#chimp-form-premium').addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            // Dispatch the event.
+                            const event = new Event('build');
+                            document.querySelector('body').dispatchEvent(event);
+
+                        });
+
+
+                        // Listen for the event.
+                        document.querySelector('body').addEventListener('build', function(e) {
+
+                            let firstName = document.querySelector('#chimp-email-firstname1').value;
+                            let lastName = document.querySelector('#chimp-email-lastname1').value;
+                            let email = document.querySelector('#chimp-email-email1').value;
+
+                            let isFirstNameValid = ValidateFirstName(firstName);
+                            let isLastNameValid = ValidateLastName(lastName);
+                            let isEmailValid = ValidateEmail(email);
+
+                            if (isFirstNameValid) {
+                                document.querySelector('.chimp-email-firstname1').style.display = "none";
+                            } else {
+                                document.querySelector('.chimp-email-firstname1').style.display = "block";
+                            }
+                            if (isLastNameValid) {
+                                document.querySelector('.chimp-email-lastname1').style.display = "none";
+                            } else {
+                                document.querySelector('.chimp-email-lastname1').style.display = "block";
+                            }
+                            if (isEmailValid) {
+                                document.querySelector('.chimp-email-email1').style.display = "none";
+                            } else {
+                                document.querySelector('.chimp-email-email1').style.display = "block";
+                            }
+
+                            let areAllValid = false;
+
+                            if (isFirstNameValid && isLastNameValid && isEmailValid) {
+                                areAllValid = true;
+                            }
+
+                            if (areAllValid) {
+                                document.querySelector('#submit-button-email1').style.display = "none";
+                                document.querySelector('#smart-button-container11').style.display = "block";
+                            }
+                        }, false);
+
+
                         function initPayPalButton1() {
                             paypal.Buttons({
                                 style: {
@@ -96,42 +192,15 @@
 
                                 },
 
-
                                 // onInit is called when the button first renders
                                 onInit: function(data, actions) {
-
-                                    // Disable the buttons
-                                    actions.disable();
-
-
-                                    // Listen for the event.
-                                    document.querySelector('body').addEventListener('build', function(e) {
-                                        alert(document.querySelector('#chimp-email-firstname1').value);
-
-                                        if (true) {
-                                            actions.enable();
-                                        } else {
-                                            actions.disable();
-                                        }
-
-                                    }, false);
-
-
-
+                                    document.querySelector('#smart-button-container11').style.display = "none";
                                 },
 
                                 // onClick is called when the button is clicked
-                                onClick: function() {
-
-                                    // Dispatch the event.
-                                    const event = new Event('build');
-                                    document.querySelector('body').dispatchEvent(event);
-
-                                },
-
+                                onClick: function(click) {},
 
                                 createOrder: function(data, actions) {
-
                                     return actions.order.create({
                                         purchase_units: [{
                                             "description": "Managed Account",
@@ -141,8 +210,6 @@
                                             }
                                         }]
                                     });
-
-
                                 },
 
                                 onApprove: function(data, actions) {
