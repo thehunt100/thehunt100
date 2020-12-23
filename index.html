@@ -55,11 +55,14 @@
             color: red;
             margin-top: -25px;
             padding: 20px;
-            font-size: 90%;
+            font-size: 80%;
+            font-family: 'Montserrat';
         }
         
-        .submit-button-email {
+        #submit-button-email1,
+        #submit-button-email2 {
             margin-left: 0px;
+            padding: 0px;
         }
     </style>
 </head>
@@ -121,12 +124,9 @@
                             <span class="validationtext chimp-email-email1">Please fill in a correct email</span>
                             <input id="submit-button-email1" type="submit" value="Submit">
                         </form>
-                        <div id="response-premium"></div>
                     </div>
 
-
-
-                    <div id="smart-button-container11">
+                    <div id="smart-button-container1">
                         <div style="text-align: center;">
                             <div id="paypal-button-container1"></div>
                         </div>
@@ -140,7 +140,6 @@
                             document.querySelector('body').dispatchEvent(event);
 
                         });
-
 
                         // Listen for the event.
                         document.querySelector('body').addEventListener('build', function(e) {
@@ -177,10 +176,9 @@
 
                             if (areAllValid) {
                                 document.querySelector('#submit-button-email1').style.display = "none";
-                                document.querySelector('#smart-button-container11').style.display = "block";
+                                document.querySelector('#smart-button-container1').style.display = "block";
                             }
                         }, false);
-
 
                         function initPayPalButton1() {
                             paypal.Buttons({
@@ -194,7 +192,7 @@
 
                                 // onInit is called when the button first renders
                                 onInit: function(data, actions) {
-                                    document.querySelector('#smart-button-container11').style.display = "none";
+                                    document.querySelector('#smart-button-container1').style.display = "none";
                                 },
 
                                 // onClick is called when the button is clicked
@@ -277,10 +275,13 @@
                     <div class="form">
                         <form id="chimp-form-invite" class="subscribe-form" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded" autocomplete="off" novalidate>
                             <input class="mail" id="chimp-email-firstname2" type="email" name="email" placeholder="First name" autocomplete="off">
+                            <span class="validationtext chimp-email-firstname2">First name should be at least 3 letters</span>
                             <input class="mail" id="chimp-email-lastname2" type="email" name="email" placeholder="Last name" autocomplete="off">
+                            <span class="validationtext chimp-email-lastname2">Last name should be at least 3 letters</span>
                             <input class="mail" id="chimp-email-email2" type="email" name="email" placeholder="Email" autocomplete="off">
+                            <span class="validationtext chimp-email-email2">Please fill in a correct email</span>
+                            <input id="submit-button-email2" type="submit" value="Submit">
                         </form>
-                        <div id="response-invite"></div>
                     </div>
 
                     <div id="smart-button-container">
@@ -288,7 +289,56 @@
                             <div id="paypal-button-container"></div>
                         </div>
                     </div>
+
                     <script>
+                        document.querySelector('#chimp-form-invite').addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            // Dispatch the event.
+                            const event = new Event('build');
+                            document.querySelector('body').dispatchEvent(event);
+
+                        });
+
+                        // Listen for the event.
+                        document.querySelector('body').addEventListener('build', function(e) {
+
+                            let firstName = document.querySelector('#chimp-email-firstname2').value;
+                            let lastName = document.querySelector('#chimp-email-lastname2').value;
+                            let email = document.querySelector('#chimp-email-email2').value;
+
+                            let isFirstNameValid = ValidateFirstName(firstName);
+                            let isLastNameValid = ValidateLastName(lastName);
+                            let isEmailValid = ValidateEmail(email);
+
+                            if (isFirstNameValid) {
+                                document.querySelector('.chimp-email-firstname2').style.display = "none";
+                            } else {
+                                document.querySelector('.chimp-email-firstname2').style.display = "block";
+                            }
+                            if (isLastNameValid) {
+                                document.querySelector('.chimp-email-lastname2').style.display = "none";
+                            } else {
+                                document.querySelector('.chimp-email-lastname2').style.display = "block";
+                            }
+                            if (isEmailValid) {
+                                document.querySelector('.chimp-email-email2').style.display = "none";
+                            } else {
+                                document.querySelector('.chimp-email-email2').style.display = "block";
+                            }
+
+                            let areAllValid = false;
+
+                            if (isFirstNameValid && isLastNameValid && isEmailValid) {
+                                areAllValid = true;
+                            }
+
+                            if (areAllValid) {
+                                document.querySelector('#submit-button-email2').style.display = "none";
+                                document.querySelector('#smart-button-container').style.display = "block";
+                            }
+                        }, false);
+
+
                         function initPayPalButton() {
                             paypal.Buttons({
                                 style: {
@@ -298,6 +348,15 @@
                                     label: 'pay',
 
                                 },
+
+
+                                // onInit is called when the button first renders
+                                onInit: function(data, actions) {
+                                    document.querySelector('#smart-button-container').style.display = "none";
+                                },
+
+                                // onClick is called when the button is clicked
+                                onClick: function(click) {},
 
                                 createOrder: function(data, actions) {
                                     return actions.order.create({
