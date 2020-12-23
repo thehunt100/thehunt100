@@ -95,6 +95,18 @@
         #recaptcha1 {
             display: none;
         }
+        
+        #invite-code,
+        #invite-code-text {
+            width: 100%;
+            text-align: center;
+            font-size: 130%;
+            font-family: 'Montserrat';
+        }
+        
+        #invite-code {
+            font-weight: bolder;
+        }
     </style>
 </head>
 
@@ -422,6 +434,123 @@
 
 
 
+
+    <div class="modal fade" id="inviteFormLong" tabindex="-1" role="dialog" aria-labelledby="inviteFormLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <!-- Pricing Tables -->
+                    <div id="pricing-invite" class="pricing-section text-center">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 offset-lg-2 col-sm-10 offset-sm-1">
+                                    <div class="pricing-intro">
+                                        <h1><span style="font-size: 118%;"> The Hunt 100</span> <br><br>welcome</h1>
+                                        <p>
+                                            <br>Why did I get an invitation? <br><br>Based on results with previous clients we believe that you can become very successful on LinkedIn.
+                                        </p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-left">
+                                                <h2>SUCCESS</h2>
+                                                <p>Course</p>
+                                                <p>Software</p>
+                                                <p>Q & A Sessions</p>
+                                                <br>
+                                                <img class="img-fluid" src="assets/icons/rocket-dark.png" width="120" alt="Icon">
+                                                <div class="pricing-details">
+                                                    <span style="text-decoration: line-through;">$125</span>
+                                                    <div class="sub_span">Free Lifetime Account</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="refund-txt" style="font-size: 92%; line-height: 21px;">Welcome we hope you will be successful and we are here to help you. Please join our Q & A sessions to find out all the details of the program.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="invite-code-text">YOUR CODE:<br><br></div>
+                    <div id="invite-code">780IOYLD</div>
+
+                    <div class="form">
+                        <form id="chimp-form-invite" class="subscribe-form" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded" autocomplete="off" novalidate>
+                            <input class="mail" id="chimp-email-firstname3" type="email" name="email" placeholder="First name" autocomplete="off">
+                            <span class="validationtext chimp-email-firstname3">First name should be at least 3 letters</span>
+                            <input class="mail" id="chimp-email-lastname3" type="email" name="email" placeholder="Last name" autocomplete="off">
+                            <span class="validationtext chimp-email-lastname3">Last name should be at least 3 letters</span>
+                            <input class="mail" id="chimp-email-email3" type="email" name="email" placeholder="Email" autocomplete="off">
+                            <span class="validationtext chimp-email-email3">Please fill in a correct email</span>
+                            <input id="submit-button-email3" type="submit" value="Submit">
+                        </form>
+                    </div>
+
+
+
+                    <script>
+                        document.querySelector('#chimp-form-invite').addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            // Dispatch the event.
+                            const event = new Event('build3');
+                            document.querySelector('body').dispatchEvent(event);
+
+                        });
+
+                        // Listen for the event.
+                        document.querySelector('body').addEventListener('build3', function(e) {
+
+                            let firstName = document.querySelector('#chimp-email-firstname3').value;
+                            let lastName = document.querySelector('#chimp-email-lastname3').value;
+                            let email = document.querySelector('#chimp-email-email3').value;
+
+                            let isFirstNameValid = ValidateFirstName(firstName);
+                            let isLastNameValid = ValidateLastName(lastName);
+                            let isEmailValid = ValidateEmail(email);
+
+                            if (isFirstNameValid) {
+                                document.querySelector('.chimp-email-firstname3').style.display = "none";
+                            } else {
+                                document.querySelector('.chimp-email-firstname3').style.display = "block";
+                            }
+                            if (isLastNameValid) {
+                                document.querySelector('.chimp-email-lastname3').style.display = "none";
+                            } else {
+                                document.querySelector('.chimp-email-lastname3').style.display = "block";
+                            }
+                            if (isEmailValid) {
+                                document.querySelector('.chimp-email-email3').style.display = "none";
+                            } else {
+                                document.querySelector('.chimp-email-email3').style.display = "block";
+                            }
+
+                            let areAllValid = false;
+
+                            if (isFirstNameValid && isLastNameValid && isEmailValid) {
+                                areAllValid = true;
+                            }
+
+                            if (areAllValid) {
+                                document.querySelector('#submit-button-email3').style.display = "none";
+                                //send request for free account
+                            }
+                        }, false);
+                    </script>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
     <div class="modal fade" id="contactFormLong" tabindex="-1" role="dialog" aria-labelledby="contactFormLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -438,7 +567,6 @@
                             <textarea class="mail" id="contact-message" placeholder="Message" rows="6"></textarea>
                             <input class="mail" id="contact-email" type="email" name="email" placeholder="Your email" autocomplete="off"><input id="contact-submit" class="submit-button" type="submit" value="Submit">
                         </form>
-                        <div id="response"></div>
                         <div id="recaptcha1"></div>
                     </div>
 
@@ -491,6 +619,7 @@
                                             <h2>The Hunt 100 will change your LinkedIn Game.</h2>
                                             <a class="btn-action btn-outline nav-link _js-scroll-trigger" href="#cta" data-toggle="modal" data-target="#contactFormLong">Contact</a>
                                             <a class="btn-action js-scroll-trigger" href="#pricing">Signup</a>
+                                            <a style="display: none;" id="show-success" class="btn-action btn-outline" data-toggle="modal" data-target="#inviteFormLong">Start</a>
                                         </div>
 
                                         <p class="condition_txt">Get an unfair advantage using this method for social selling and business development.
