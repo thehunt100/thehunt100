@@ -179,55 +179,6 @@ $(document)
         }
 
 
-        var onloadCallback = function() {
-            grecaptcha.render('recaptcha1', {
-                'sitekey': '6Lcr1s8ZAAAAAMqWLqJ0MclOsbeCbbE-6NWN9y06',
-                'callback': function(response) {
-                    var name = $('#leadspod-download-course-hero-name').val();
-                    var email = $('#leadspod-download-course-hero-email').val();
-                    post_data = {
-                        'name': name,
-                        'email': email,
-                        'choice': "leadspod-download-course-hero"
-                    };
-                    var url = 'https://script.google.com/macros/s/AKfycbxk_Np2R_F1LlinTA33bAQPyg5XZn-rrs4M5xWC3lGRvts2kSX_/exec';
-                    var jqxhr = $.post(url, post_data, function(post_data) {
-                            setTimeout(function() {
-                                window.location.replace('thank-you.html');
-                            }, 500);
-                        })
-                        .fail(function(data) {
-                            setTimeout(function() {
-                                window.location.replace('error.html');
-                            }, 500);
-                        });
-
-                }
-            });
-            grecaptcha.render('recaptcha2', {
-                'sitekey': '6Lcr1s8ZAAAAAMqWLqJ0MclOsbeCbbE-6NWN9y06',
-                'callback': function(response) {
-                    var email = $('#leadspod-download-course-footer-email').val();
-                    var name = $('#leadspod-download-course-footer-name').val();
-                    post_data = {
-                        'name': name,
-                        'email': email,
-                        'choice': "leadspod-download-course-footer"
-                    };
-                    var url = 'https://script.google.com/macros/s/AKfycbxk_Np2R_F1LlinTA33bAQPyg5XZn-rrs4M5xWC3lGRvts2kSX_/exec';
-                    var jqxhr = $.post(url, post_data, function(post_data) {
-                            setTimeout(function() {
-                                window.location.replace('thank-you.html');
-                            }, 500);
-                        })
-                        .fail(function(data) {
-                            setTimeout(function() {
-                                window.location.replace('error.html');
-                            }, 500);
-                        });
-                }
-            });
-        };
         //
 
 
