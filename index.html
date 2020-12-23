@@ -53,8 +53,8 @@
             grecaptcha.render('recaptcha1', {
                 'sitekey': '6Lda_hEaAAAAAHNkud-Y9X1r7cCZ9EKn8WBVZeF9',
                 'callback': function(response) {
-                    var name = $('#leadspod-download-course-hero-name').val();
-                    var email = $('#leadspod-download-course-hero-email').val();
+                    var name = $('#contact-message').val();
+                    var email = $('#contact-email').val();
                     post_data = {
                         'name': name,
                         'email': email,
