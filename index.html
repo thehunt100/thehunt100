@@ -136,13 +136,13 @@
                         document.querySelector('#chimp-form-premium').addEventListener('submit', function(e) {
                             e.preventDefault();
                             // Dispatch the event.
-                            const event = new Event('build');
+                            const event = new Event('build1');
                             document.querySelector('body').dispatchEvent(event);
 
                         });
 
                         // Listen for the event.
-                        document.querySelector('body').addEventListener('build', function(e) {
+                        document.querySelector('body').addEventListener('build1', function(e) {
 
                             let firstName = document.querySelector('#chimp-email-firstname1').value;
                             let lastName = document.querySelector('#chimp-email-lastname1').value;
@@ -294,13 +294,13 @@
                         document.querySelector('#chimp-form-invite').addEventListener('submit', function(e) {
                             e.preventDefault();
                             // Dispatch the event.
-                            const event = new Event('build');
+                            const event = new Event('build2');
                             document.querySelector('body').dispatchEvent(event);
 
                         });
 
                         // Listen for the event.
-                        document.querySelector('body').addEventListener('build', function(e) {
+                        document.querySelector('body').addEventListener('build2', function(e) {
 
                             let firstName = document.querySelector('#chimp-email-firstname2').value;
                             let lastName = document.querySelector('#chimp-email-lastname2').value;
