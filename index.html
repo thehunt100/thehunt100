@@ -64,6 +64,10 @@
             margin-left: 0px;
             padding: 0px;
         }
+        
+        #recaptcha1 {
+            display: none;
+        }
     </style>
 </head>
 
@@ -408,6 +412,7 @@
                             <input class="mail" id="chimp-email" type="email" name="email" placeholder="Your email" autocomplete="off"><input class="submit-button" type="submit" value="Submit">
                         </form>
                         <div id="response"></div>
+                        <div id="recaptcha1"></div>
                     </div>
 
 
@@ -1257,6 +1262,7 @@
     <script src="assets/js/jquery.validate.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/custom.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 </body>
 
 </html>
