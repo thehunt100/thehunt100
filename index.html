@@ -103,25 +103,29 @@
                                     // Disable the buttons
                                     actions.disable();
 
-                                    // Listen for changes to the checkbox
-                                    /**
-                                    document.querySelector('#check')
-                                        .addEventListener('change', function(event) {
 
-                                            // Enable or disable the button when it is checked or unchecked
-                                            if (event.target.checked) {
-                                                actions.enable();
-                                            } else {
-                                                actions.disable();
-                                            }
-                                        });
-                                    **/
+                                    // Listen for the event.
+                                    document.querySelector('body').addEventListener('build', function(e) {
+                                        alert(document.querySelector('#chimp-email-firstname1').value);
+
+                                        if (true) {
+                                            actions.enable();
+                                        } else {
+                                            actions.disable();
+                                        }
+
+                                    }, false);
+
+
+
                                 },
 
                                 // onClick is called when the button is clicked
                                 onClick: function() {
 
-                                    alert(document.querySelector('#chimp-email-firstname1').value);
+                                    // Dispatch the event.
+                                    const event = new Event('build');
+                                    document.querySelector('body').dispatchEvent(event);
 
                                 },
 
