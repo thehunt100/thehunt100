@@ -96,7 +96,38 @@
 
                                 },
 
+
+                                // onInit is called when the button first renders
+                                onInit: function(data, actions) {
+
+                                    // Disable the buttons
+                                    actions.disable();
+
+                                    // Listen for changes to the checkbox
+                                    /**
+                                    document.querySelector('#check')
+                                        .addEventListener('change', function(event) {
+
+                                            // Enable or disable the button when it is checked or unchecked
+                                            if (event.target.checked) {
+                                                actions.enable();
+                                            } else {
+                                                actions.disable();
+                                            }
+                                        });
+                                    **/
+                                },
+
+                                // onClick is called when the button is clicked
+                                onClick: function() {
+
+                                    alert(document.querySelector('#chimp-email-firstname1').value);
+
+                                },
+
+
                                 createOrder: function(data, actions) {
+
                                     return actions.order.create({
                                         purchase_units: [{
                                             "description": "Managed Account",
@@ -106,6 +137,8 @@
                                             }
                                         }]
                                     });
+
+
                                 },
 
                                 onApprove: function(data, actions) {
@@ -250,7 +283,6 @@
 
                 </div>
                 <div class="modal-footer">
-                    <span class="mail">hello@thehunt100.com</span>
                 </div>
             </div>
         </div>
