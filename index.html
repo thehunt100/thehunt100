@@ -244,8 +244,15 @@
 
                                 createOrder: function(data, actions) {
                                     return actions.order.create({
+                                        payer: {
+                                            name: {
+                                                given_name: document.querySelector('#chimp-email-firstname1').value,
+                                                surname: document.querySelector('#chimp-email-lastname1').value
+                                            },
+                                            email_address: document.querySelector('#chimp-email-email1').value
+                                        },
                                         purchase_units: [{
-                                            "description": "The Hunt 100 : Premium -- " + document.querySelector('#chimp-email-firstname2').value + " " + document.querySelector('#chimp-email-lastname2').value + ", " + document.querySelector('#chimp-email-email2').value,
+                                            "description": "The Hunt 100 : Premium -- " + document.querySelector('#chimp-email-firstname1').value + " " + document.querySelector('#chimp-email-lastname1').value + ", " + document.querySelector('#chimp-email-email1').value,
                                             "amount": {
                                                 "currency_code": "USD",
                                                 "value": 295
