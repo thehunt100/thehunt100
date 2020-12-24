@@ -195,16 +195,23 @@ $(document)
 
 
             $('#contact-message')
-                .css('border-color', '#e7e7e7');
+                .css('border-color', '#fff');
+            $('#contact-name')
+                .css('border-color', '#fff');
             $('#contact-email')
-                .css('border-color', '#e7e7e7');
+                .css('border-color', '#fff');
 
             var message = $('#contact-message').val();
+            var name = $('#contact-name').val();
             var email = $('#contact-email').val();
 
             var proceed = true;
             if (message == "") {
                 $('#contact-message').css('border', '2px solid red');
+                proceed = false;
+            }
+            if (name == "") {
+                $('#contact-name').css('border', '2px solid red');
                 proceed = false;
             }
             if (email == "") {

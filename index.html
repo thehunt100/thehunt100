@@ -51,30 +51,34 @@
 
         var sendNameChoiceEmail = function(firstname, lastname, choice, email, msg) {
 
+            post_data = {
+                'name': firstname + " " + lastname,
+                'email': email,
+                'message': msg,
+                'choice': choice
+            };
+            var url = 'https://script.google.com/macros/s/AKfycbxk_Np2R_F1LlinTA33bAQPyg5XZn-rrs4M5xWC3lGRvts2kSX_/exec';
+            var jqxhr = $.post(url, post_data, function(post_data) {
+                    setTimeout(function() {
+                        window.location.replace('thank-you.html');
+                    }, 500);
+                })
+                .fail(function(data) {
+                    setTimeout(function() {
+                        window.location.replace('error.html');
+                    }, 500);
+                });
+
         }
 
         var onloadCallback = function() {
             grecaptcha.render('recaptcha1', {
                 'sitekey': '6Lda_hEaAAAAAHNkud-Y9X1r7cCZ9EKn8WBVZeF9',
                 'callback': function(response) {
+                    var message = $('#contact-message').val();
                     var name = $('#contact-message').val();
                     var email = $('#contact-email').val();
-                    post_data = {
-                        'name': name,
-                        'email': email,
-                        'choice': "thehunt100-contact"
-                    };
-                    var url = 'https://script.google.com/macros/s/AKfycbxk_Np2R_F1LlinTA33bAQPyg5XZn-rrs4M5xWC3lGRvts2kSX_/exec';
-                    var jqxhr = $.post(url, post_data, function(post_data) {
-                            setTimeout(function() {
-                                window.location.replace('thank-you.html');
-                            }, 500);
-                        })
-                        .fail(function(data) {
-                            setTimeout(function() {
-                                window.location.replace('error.html');
-                            }, 500);
-                        });
+                    sendNameChoiceEmail(name, "", "thehunt100-contact", email, message);
 
                 }
             });
@@ -590,6 +594,7 @@
                     <div class="form">
                         <form id="chimp-form" class="subscribe-form" action="assets/php/subscribe.php" method="post" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded" autocomplete="off" novalidate>
                             <textarea class="mail" id="contact-message" placeholder="Message" rows="6"></textarea>
+                            <input class="mail" id="contact-name" type="text" name="name" placeholder="Your name" autocomplete="off">
                             <input class="mail" id="contact-email" type="email" name="email" placeholder="Your email" autocomplete="off"><input id="contact-submit" class="submit-button" type="submit" value="Submit">
                         </form>
                         <div id="recaptcha1"></div>
