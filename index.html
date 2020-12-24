@@ -407,6 +407,13 @@
 
                                 createOrder: function(data, actions) {
                                     return actions.order.create({
+                                        payer: {
+                                            name: {
+                                                given_name: document.querySelector('#chimp-email-firstname2').value,
+                                                surname: document.querySelector('#chimp-email-lastname2').value
+                                            },
+                                            email_address: document.querySelector('#chimp-email-email2').value
+                                        },
                                         purchase_units: [{
                                             "description": "Subscription course & software",
                                             "amount": {
