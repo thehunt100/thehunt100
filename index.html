@@ -507,7 +507,7 @@
                     </div>
 
                     <div id="invite-code-text">YOUR CODE:<br><br></div>
-                    <div id="invite-code">780IOYLD</div>
+                    <div id="invite-code"></div>
 
                     <div class="form">
                         <form id="chimp-form-invite" class="subscribe-form" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded" autocomplete="off" novalidate>
@@ -538,6 +538,7 @@
                             let firstName = document.querySelector('#chimp-email-firstname3').value;
                             let lastName = document.querySelector('#chimp-email-lastname3').value;
                             let email = document.querySelector('#chimp-email-email3').value;
+                            let invitecode = document.querySelector('#invite-code').value;
 
                             let isFirstNameValid = ValidateFirstName(firstName);
                             let isLastNameValid = ValidateLastName(lastName);
@@ -568,7 +569,7 @@
                             if (areAllValid) {
                                 document.querySelector('#submit-button-email3').style.display = "none";
                                 //send request for free account
-                                sendNameChoiceEmail(firstName, lastName, "thehunt100-invite", email, "");
+                                sendNameChoiceEmail(firstName, lastName, "thehunt100-invite", email, invitecode);
                             }
                         }, false);
                     </script>
