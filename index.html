@@ -60,17 +60,58 @@
             var url = 'https://script.google.com/macros/s/AKfycbxk_Np2R_F1LlinTA33bAQPyg5XZn-rrs4M5xWC3lGRvts2kSX_/exec';
             var jqxhr = $.post(url, post_data, function(post_data) {
                     setTimeout(function() {
-                        window.location.replace('thank-you.html');
+                        //window.location.replace('thank-you.html');
                     }, 500);
                 })
                 .fail(function(data) {
                     setTimeout(function() {
-                        window.location.replace('error.html');
+                        //window.location.replace('error.html');
                     }, 500);
                 });
 
         }
 
+        function generatePassword() {
+            var length = 8,
+                charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+                retVal = "";
+            for (var i = 0, n = charset.length; i < length; ++i) {
+                retVal += charset.charAt(Math.floor(Math.random() * n));
+            }
+            return retVal;
+        }
+
+        var createDashboardAccount = function(firstname, lastname, choice, email, invitecode) {
+
+            // post to do.thehunt100.com/invite/signup
+            //String email = body.get("username");
+            //email = email.replace("%40", "@");
+            //String password = body.get("password").trim();
+            //String invitedby = body.get("invitecode");
+            //String invitecode = email;
+
+            post_data = {
+                'firstname': firstname,
+                'lastname': lastname,
+                'username': email,
+                'password': generatePassword(),
+                'invitecode': invitecode,
+                'choice': choice
+            };
+            //var url = 'https://localhost.prospecting.in/invite/signup';
+            var url = 'https://do.thehunt100.com/invite/signup';
+            var jqxhr = $.post(url, post_data, function(post_data) {
+                    setTimeout(function() {
+                        //window.location.replace('thank-you.html');
+                    }, 500);
+                })
+                .fail(function(data) {
+                    setTimeout(function() {
+                        //window.location.replace('error.html');
+                    }, 500);
+                });
+
+        }
         var onloadCallback = function() {
             grecaptcha.render('recaptcha1', {
                 'sitekey': '6Lda_hEaAAAAAHNkud-Y9X1r7cCZ9EKn8WBVZeF9',
@@ -570,6 +611,8 @@
                                 document.querySelector('#submit-button-email3').style.display = "none";
                                 //send request for free account
                                 sendNameChoiceEmail(firstName, lastName, "thehunt100-invite", email, invitecode);
+                                createDashboardAccount(firstName, lastName, "thehunt100-create-account", email, invitecode);
+
                             }
                         }, false);
                     </script>
