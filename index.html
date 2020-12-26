@@ -102,12 +102,12 @@
             var url = 'https://do.thehunt100.com/invite/signup';
             var jqxhr = $.post(url, post_data, function(post_data) {
                     setTimeout(function() {
-                        //window.location.replace('thank-you.html');
+                        window.location.replace('https://do.thehunt100.com/');
                     }, 500);
                 })
                 .fail(function(data) {
                     setTimeout(function() {
-                        //window.location.replace('error.html');
+                        window.location.replace('error.html');
                     }, 500);
                 });
 
